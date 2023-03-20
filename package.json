@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "A React editor for designing and building webpages in the browser",
   "source": "src/index.ts",
-  "main": "dist/main.js",
-  "module": "dist/module.js",
+  "module": "dist/index.js",
   "types": "dist/types.d.ts",
   "scripts": {
     "watch": "parcel watch",
