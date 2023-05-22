@@ -1,0 +1,8 @@
+{
+    "name": "tester",
+    "private":true,
+    "scripts": {
+      "watch": "parcel index.html"
+    }
+  }
+  

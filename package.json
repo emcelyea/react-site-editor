@@ -2,12 +2,12 @@
   "name": "react-site-editor",
   "version": "1.0.0",
   "description": "A React editor for designing and building webpages in the browser",
-  "source": "src/index.ts",
+  "source": "editor/index.tsx",
   "module": "dist/index.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build"
+    "build": "parcel build",
+    "dev": "cd test && yarn watch"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/emcelyea/react-site-editor#readme",
   "devDependencies": {
     "@parcel/packager-ts": "2.8.3",
+    "@parcel/transformer-sass": "2.8.3",
     "@parcel/transformer-typescript-types": "2.8.3",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
@@ -31,5 +32,10 @@
     "parcel": "^2.8.3",
     "prettier": "^2.8.4",
     "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
