@@ -1,14 +1,13 @@
 import Editor from './Editor';
-import {Page, Field, Container} from './types';
+import EditorContext from './context/EditorContext';
+import {ReactSiteEditorProps} from './types';
 
-type ReactSiteEditorProps<T> = {
-    data: {
-        page:Page,
-        fields?: Field<T>,
-        containers?: Container,
-    }
-}
-export default function ReactSiteEditor({data}: ReactSiteEditorProps<string>) {
+
+export default function ReactSiteEditor<T>({data}: ReactSiteEditorProps<T>) {
     
-    return <Editor data={data}/>
+    return (
+        <EditorContext data={data}>
+            <Editor/>
+        </EditorContext>
+    );
 }

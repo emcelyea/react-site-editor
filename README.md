@@ -30,8 +30,17 @@ those while the library determines all the layout and sizing information for the
 
 ### TODOS
 * Write up type for data structure
-* Come up with positioning functionality, what CSS can back drag n drop dynamic positioning while enforcing styling spacing guidelines
+* Transfer EditorContext over so it can intelligently handle updates
 
 * how do different apps do it:
     - squarespace: uses grid to render n * n matrix of divs, element takes up m * m grid spaces. This seems ideal but is not performant.
     - wix: uses absolute positioning to line up element. Terrible as it breaks DOM flow.
+
+### Architecture
+Consumers of this component are responsible for defining "Fields" that can be inserted into the editor. 
+A Field is a React Component that receives:
+A preview prop, data prop (FieldData type) & onChange(val:string) function
+
+
+
+Editor is wrapped in a EditorContext that controls updates to size/shape 
