@@ -5,6 +5,9 @@
   "source": "editor/index.tsx",
   "module": "dist/index.js",
   "types": "dist/types.d.ts",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "build": "parcel build",
     "dev": "cd test && yarn watch"

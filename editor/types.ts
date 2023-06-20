@@ -1,6 +1,8 @@
-export interface Field<T> {
+import {Children} from 'react';
+
+export interface Field {
     id: string;
-    data: T; // user defined data type that field holds
+    data: any; // user defined data type that field holds
     style: string; // style string that is converted to valid css;
     edit?: boolean; // can field be edited
     delete?: boolean; // can field be deleted
@@ -9,7 +11,7 @@ export interface Field<T> {
     pageId: string; // parent page
 }
 // used to trigger intelligent rerenders internally
-export interface _Field<T> extends Field<T> {
+export interface _Field extends Field {
     rerender: number;
 }
 export interface FieldUpdate {
@@ -50,23 +52,24 @@ export interface Update<T> {
     style?: string;
 }
 
-export type ReactSiteEditorData<T> = {
+export type ReactSiteEditorData = {
     page:Page,
-    fields?: Field<T>[],
+    fields?: Field[],
     containers?: Container[]
 }
-export type OnChangeData<T> = {
-    updated: ReactSiteEditorData<T>,
+export type OnChangeData = {
+    updated: ReactSiteEditorData,
     change: {
         type: 'create' | 'update' | 'delete',
         target: 'field' | 'container',
         id: string,
         style?: string;
-        data?: T,
+        data?: any,
         childOrder?: string[]
     }
 }
-export type ReactSiteEditorProps<T> = {
-    data: ReactSiteEditorData<T>,
-    onChange: (data: OnChangeData<T>) => void;
+export type ReactSiteEditorProps = {
+    data: ReactSiteEditorData,
+    children: Children;
+    onChange: (data: OnChangeData) => void;
 }

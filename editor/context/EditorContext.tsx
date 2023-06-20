@@ -17,21 +17,21 @@ import {
   } from '../util/defaults';
 
 
-  type EditorContextProviderProps<T> = {
+  type EditorContextProviderProps = {
     children: ReactNode
-  } & ReactSiteEditorProps<T>;
+  } & ReactSiteEditorProps;
 
 
-  interface EditorContextInterface<T = unknown> {
-    data?: ReactSiteEditorProps<T>['data'];
+  interface EditorContextInterface {
+    data?: ReactSiteEditorProps['data'];
     addField: (
       pageId: string,
       containerId: string,
       type: string,
-      data?: T
+      data?: any
     ) => void;
     addContainer: (pageId: string, parentRowId?: string, siblingRowId?: string) => void;
-    updateField: (id: string, update: {style?: string; data?: T}) => void;
+    updateField: (id: string, update: {style?: string; data?: any}) => void;
     updateContainer: (id: string, update: {style?: string; childOrder?: string[]}) => void;
     deleteField: (id: string) => void;
     deleteContainer: (id: string) => void;
@@ -48,15 +48,15 @@ import {
     // resetData: () => {},
   });
   
-  export default function EditorContextProvider<T = unknown>({
+  export default function EditorContextProvider({
     children,
     data,
-  }: EditorContextProviderProps<T>) {
+  }: EditorContextProviderProps) {
     // we use a ref to ensure consistency when multiple setStates happen
-    const internalData = useRef<ReactSiteEditorProps<T>['data'] | undefined>();
-    const internalDataMap = useRef<{[key:string]: _Field<T> | _Container}>();
-    const [dataState, setDataState] = useState<ReactSiteEditorProps<T>['data']>();
-    const [dataMap, setDataMap] = useState<{[key:string]: _Field<T> | _Container}>();
+    const internalData = useRef<ReactSiteEditorProps['data'] | undefined>();
+    const internalDataMap = useRef<{[key:string]: _Field | _Container}>();
+    const [dataState, setDataState] = useState<ReactSiteEditorProps['data']>();
+    const [dataMap, setDataMap] = useState<{[key:string]: _Field | _Container}>();
     useEffect(() => {
       // to prevent rerenders we only draw on initial set of data
       // consumers should use `resetData` if they want to sync a new set of data for some reason
